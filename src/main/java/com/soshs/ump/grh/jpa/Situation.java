@@ -4,6 +4,7 @@
  */
 package com.soshs.ump.grh.jpa;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -46,9 +47,11 @@ public class Situation implements Serializable {
     @Column(name = "date_effet")
     @Temporal(TemporalType.DATE)
     private Date dateEffet;
+    @JsonbTransient
     @JoinColumn(name = "cadre", referencedColumnName = "id_cadre")
     @ManyToOne
     private Cadre cadre;
+    @JsonbTransient
     @JoinColumn(name = "person", referencedColumnName = "id_person")
     @ManyToOne
     private Person person;

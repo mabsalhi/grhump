@@ -31,7 +31,7 @@ import java.util.List;
 @NamedQueries({
     @NamedQuery(name = "Diplome.findAll", query = "SELECT d FROM Diplome d"),
     @NamedQuery(name = "Diplome.findById", query = "SELECT d FROM Diplome d WHERE d.id = :id"),
-    @NamedQuery(name = "Diplome.findByIntitul\u00e9", query = "SELECT d FROM Diplome d WHERE d.intitul\u00e9 = :intitul\u00e9"),
+    @NamedQuery(name = "Diplome.findByIntitule", query = "SELECT d FROM Diplome d WHERE d.intitule = :intitule"),
     @NamedQuery(name = "Diplome.findByType", query = "SELECT d FROM Diplome d WHERE d.type = :type"),
     @NamedQuery(name = "Diplome.findByNiveau", query = "SELECT d FROM Diplome d WHERE d.niveau = :niveau")})
 public class Diplome implements Serializable {
@@ -45,8 +45,8 @@ public class Diplome implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 150)
-    @Column(name = "intitul\u00e9")
-    private String intitulé;
+    @Column(name = "intitule")
+    private String intitule;
     @Size(max = 150)
     @Column(name = "type")
     private String type;
@@ -62,9 +62,9 @@ public class Diplome implements Serializable {
         this.id = id;
     }
 
-    public Diplome(Integer id, String intitulé) {
+    public Diplome(Integer id, String intitule) {
         this.id = id;
-        this.intitulé = intitulé;
+        this.intitule = intitule;
     }
 
     public Integer getId() {
@@ -75,12 +75,12 @@ public class Diplome implements Serializable {
         this.id = id;
     }
 
-    public String getIntitulé() {
-        return intitulé;
+    public String getIntitule() {
+        return intitule;
     }
 
-    public void setIntitulé(String intitulé) {
-        this.intitulé = intitulé;
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
     }
 
     public String getType() {

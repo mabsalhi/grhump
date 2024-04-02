@@ -4,6 +4,7 @@
  */
 package com.soshs.ump.grh.jpa;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -96,13 +97,13 @@ public class Person implements Serializable {
     @Size(max = 50)
     @Column(name = "nationalite")
     private String nationalite;
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Qualification> qualificationList;
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Afectation> afectationList;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "person")
     private List<Contacts> contactsList;
-    @OneToMany(mappedBy = "person")
+    @OneToMany(mappedBy = "person", cascade = CascadeType.ALL)
     private List<Situation> situationList;
 
     public Person() {

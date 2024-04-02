@@ -4,6 +4,7 @@
  */
 package com.soshs.ump.grh.jpa;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -50,6 +51,7 @@ public class Contacts implements Serializable {
     @Size(min = 1, max = 250)
     @Column(name = "details")
     private String details;
+    @JsonbTransient
     @JoinColumn(name = "person", referencedColumnName = "id_person")
     @ManyToOne(optional = false)
     private Person person;

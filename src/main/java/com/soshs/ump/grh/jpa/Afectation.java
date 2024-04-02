@@ -4,6 +4,7 @@
  */
 package com.soshs.ump.grh.jpa;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,9 +52,11 @@ public class Afectation implements Serializable {
     @Size(max = 2147483647)
     @Column(name = "mission")
     private String mission;
+    @JsonbTransient
     @JoinColumn(name = "entite", referencedColumnName = "id")
     @ManyToOne
     private Entite entite;
+    @JsonbTransient
     @JoinColumn(name = "person", referencedColumnName = "id_person")
     @ManyToOne
     private Person person;

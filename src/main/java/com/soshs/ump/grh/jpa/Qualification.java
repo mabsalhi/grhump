@@ -4,6 +4,7 @@
  */
 package com.soshs.ump.grh.jpa;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -36,7 +37,7 @@ import java.util.Date;
     @NamedQuery(name = "Qualification.findByType", query = "SELECT q FROM Qualification q WHERE q.type = :type"),
     @NamedQuery(name = "Qualification.findByDateObtention", query = "SELECT q FROM Qualification q WHERE q.dateObtention = :dateObtention"),
     @NamedQuery(name = "Qualification.findByPartieDelivrante", query = "SELECT q FROM Qualification q WHERE q.partieDelivrante = :partieDelivrante"),
-    @NamedQuery(name = "Qualification.findBySp\u00e9cialit\u00e9", query = "SELECT q FROM Qualification q WHERE q.sp\u00e9cialit\u00e9 = :sp\u00e9cialit\u00e9")})
+    @NamedQuery(name = "Qualification.findBySpecialite", query = "SELECT q FROM Qualification q WHERE q.specialite = :specialite")})
 public class Qualification implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -52,18 +53,20 @@ public class Qualification implements Serializable {
     private String type;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "dateObtention")
+    @Column(name = "date_obtention")
     @Temporal(TemporalType.DATE)
     private Date dateObtention;
     @Size(max = 250)
     @Column(name = "partie_delivrante")
     private String partieDelivrante;
     @Size(max = 250)
-    @Column(name = "sp\u00e9cialit\u00e9")
-    private String spécialité;
+    @Column(name = "specialite")
+    private String specialite;
+    @JsonbTransient
     @JoinColumn(name = "diplome", referencedColumnName = "id")
     @ManyToOne
     private Diplome diplome;
+    @JsonbTransient
     @JoinColumn(name = "person", referencedColumnName = "id_person")
     @ManyToOne
     private Person person;
@@ -113,12 +116,12 @@ public class Qualification implements Serializable {
         this.partieDelivrante = partieDelivrante;
     }
 
-    public String getSpécialité() {
-        return spécialité;
+    public String getSpecialite() {
+        return specialite;
     }
 
-    public void setSpécialité(String spécialité) {
-        this.spécialité = spécialité;
+    public void setSpecialite(String specialite) {
+        this.specialite = specialite;
     }
 
     public Diplome getDiplome() {
